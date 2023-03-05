@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components"
+
+const GlobalStyles = createGlobalStyle`
 html,
 body,
 div,
@@ -128,3 +131,14 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+body {
+    /* font-family: 'Righteous', cursive;
+    700 */
+        
+    /* font-family: 'Recursive', sans-serif; 
+    400 , 700 */
+    }
+`
+
+export default GlobalStyles
