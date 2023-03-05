@@ -17,7 +17,7 @@ const ContainerContador = styled.div`
   box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
   position: fixed;
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
 
   p {
