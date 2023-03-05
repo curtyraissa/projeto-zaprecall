@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { Flashcards } from "./Flashcards"
-import { Header } from "./Header"
 
 export const Deck = () => {
     return (

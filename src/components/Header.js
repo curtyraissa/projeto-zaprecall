@@ -1,10 +1,10 @@
 import styled from "styled-components"
 
-export const Header = () => {
+export const Header = ({nome, src}) => {
     return (
       <ContainerHeader>
-          <img src="./assets/logo.png" alt="logo zap recall"></img>
-          <p>ZapRecall</p>
+          <img src={src} alt={nome}></img>
+          <p>{nome}</p>
       </ContainerHeader>
     )
   }
@@ -19,7 +19,7 @@ const ContainerHeader = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   background-color: #FB6B6B;
 
   img {

@@ -8,7 +8,7 @@ export default function App() {
     <>
       <GlobalStyles />
       
-      <Header />
+      <Header nome="ZapRecall" src="../assets/logo.png" />
       <Deck />
       <Contador />
     </>
