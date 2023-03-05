@@ -1,3 +1,4 @@
+import { Contador } from './components/Contador';
 import GlobalStyles from './theme/globalStyles'
 
 export default function App() {
@@ -5,6 +6,7 @@ export default function App() {
     <>
     <GlobalStyles/>
       App
+      <Contador/>
     </>
   );
 }
