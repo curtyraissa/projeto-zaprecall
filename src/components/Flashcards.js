@@ -1,17 +1,28 @@
+import { useState } from "react"
 import styled from "styled-components"
 
 export const Flashcards = () => {
+  const [verPergunta, setVerPergunta] = useState(false)
+
   return (
     <>
-      {/* <ContainerFlashcard data-test="flashcard">
-        <p data-test="flashcard-text">Pergunta 1</p>
-        <img data-test="play-btn" src="./assets/seta_play.png" alt="seta play"></img>
-      </ContainerFlashcard> */}
+      {verPergunta === true ? (
+        <PerguntaFlashcard data-test="flashcard">
+          <p data-test="flashcard-text">O que é JSX?</p>
+          <img data-test="turn-btn" src="./assets/seta_virar.png"></img>
+        </PerguntaFlashcard>
+      ) : (
+        <ContainerFlashcard data-test="flashcard">
+          <p data-test="flashcard-text">Pergunta 1</p>
+          <img
+            data-test="play-btn"
+            src="./assets/seta_play.png"
+            alt="seta play"
+            onClick={() => setVerPergunta(true)}
+          ></img>
+        </ContainerFlashcard>
+      )}
 
-      {/* <PerguntaFlashcard data-test="flashcard">
-        <p data-test="flashcard-text">O que é JSX?</p>
-        <img data-test="turn-btn" src="./assets/seta_virar.png"></img>
-      </PerguntaFlashcard> */}
 
       {/* <RespostaFlashcard data-test="flashcard">
         <p data-test="flashcard-text">JSX é uma sintaxe para escrever HTML dentro do JS</p>
@@ -22,10 +33,10 @@ export const Flashcards = () => {
         </div>
       </RespostaFlashcard> */}
 
-      <ResultadoFlashcard data-test="flashcard">
+      {/* <ResultadoFlashcard data-test="flashcard">
         <p data-test="flashcard-text" className="vermelho">Pergunta 1</p>
         <img src="./assets/icone_erro.png" alt="icone erro"></img>
-      </ResultadoFlashcard>
+      </ResultadoFlashcard> */}
     </>
 
   )
