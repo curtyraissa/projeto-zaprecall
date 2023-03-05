@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Contador = () => {
   return (
     <ContainerContador>
-      <p>0/8 concluído</p>
+      <p data-test="footer">0/8 concluído</p>
     </ContainerContador>
   )
 }

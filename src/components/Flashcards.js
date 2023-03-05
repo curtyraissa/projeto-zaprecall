@@ -3,27 +3,27 @@ import styled from "styled-components"
 export const Flashcards = () => {
   return (
     <>
-      {/* <ContainerFlashcard>
-        <p>Pergunta 1</p>
-        <img src="./assets/seta_play.png" alt="seta play"></img>
+      {/* <ContainerFlashcard data-test="flashcard">
+        <p data-test="flashcard-text">Pergunta 1</p>
+        <img data-test="play-btn" src="./assets/seta_play.png" alt="seta play"></img>
       </ContainerFlashcard> */}
 
-      {/* <PerguntaFlashcard>
-        <p>O que é JSX?</p>
-        <img src="./assets/seta_virar.png"></img>
+      {/* <PerguntaFlashcard data-test="flashcard">
+        <p data-test="flashcard-text">O que é JSX?</p>
+        <img data-test="turn-btn" src="./assets/seta_virar.png"></img>
       </PerguntaFlashcard> */}
 
-      {/* <RespostaFlashcard>
-        <p>JSX é uma sintaxe para escrever HTML dentro do JS</p>
+      {/* <RespostaFlashcard data-test="flashcard">
+        <p data-test="flashcard-text">JSX é uma sintaxe para escrever HTML dentro do JS</p>
         <div className="button">
-          <button className="vermelho">Não lembrei</button>
-          <button className="laranja">Quase não lembrei</button>
-          <button className="verde">Zap!</button>
+          <button data-test="no-btn" className="vermelho">Não lembrei</button>
+          <button data-test="partial-btn" className="laranja">Quase não lembrei</button>
+          <button data-test="zap-btn" className="verde">Zap!</button>
         </div>
       </RespostaFlashcard> */}
 
-      <ResultadoFlashcard>
-        <p className="vermelho">Pergunta 1</p>
+      <ResultadoFlashcard data-test="flashcard">
+        <p data-test="flashcard-text" className="vermelho">Pergunta 1</p>
         <img src="./assets/icone_erro.png" alt="icone erro"></img>
       </ResultadoFlashcard>
     </>
