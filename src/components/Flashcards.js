@@ -1,19 +1,20 @@
 import { useState } from "react"
 import styled from "styled-components"
 
-export const Flashcards = ({ index, pergunta, resposta, selecionado, setSelecionado }) => {
+export const Flashcards = ({ index, pergunta, resposta, selecionado, setSelecionado, contagem, setContagem }) => {
   const [verPergunta, setVerPergunta] = useState(false)
   const [verResposta, setVerResposta] = useState(false)
   const [estilo, setEstilo] = useState("")
   const [icone, setIcone] = useState("")
-  
   const iconeInicial = icone === ''
+  
 
   function handleResultado(e, i) {
     setVerPergunta(false)
     setEstilo(e)
     setIcone(i)
     setSelecionado([...selecionado, { estilo: e, icone: i }])
+    setContagem(contagem + 1)
   }
 
   return (

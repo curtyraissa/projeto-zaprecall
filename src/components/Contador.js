@@ -1,9 +1,10 @@
 import styled from "styled-components"
+import cards from "../mock"
 
-export const Contador = () => {
+export const Contador = ({contagem}) => {
   return (
     <ContainerContador>
-      <p data-test="footer">0/8 concluído</p>
+      <p data-test="footer">{contagem}/{cards.length} {contagem > 1 ? "concluídos" : "concluído"}</p>
     </ContainerContador>
   )
 }
