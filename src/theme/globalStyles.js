@@ -132,8 +132,24 @@ table {
   border-spacing: 0;
 }
 
-body{
+body {
   background-color: #FB6B6B;
+}
+
+.riscado{
+  text-decoration: line-through;
+}
+
+.vermelho {
+  color: #FF3030 !important;
+}
+
+.laranja {
+  color: #FF922E !important;
+}
+
+.verde {
+  color: #2FBE34 !important;
 }
 `
 
