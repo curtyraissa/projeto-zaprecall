@@ -7,12 +7,14 @@ export const Flashcards = ({ index, pergunta, resposta, selecionado, setSelecion
   const [estilo, setEstilo] = useState("")
   const [icone, setIcone] = useState("")
   const iconeInicial = icone === ''
+  const [dataTest, setDataTest]= useState("flashcard-text")
   
 
-  function handleResultado(e, i) {
+  function handleResultado(e, i, d) {
     setVerPergunta(false)
     setEstilo(e)
     setIcone(i)
+    setDataTest(d)
     setSelecionado([...selecionado, { estilo: e, icone: i }])
     setContagem(contagem + 1)
   }
@@ -25,9 +27,9 @@ export const Flashcards = ({ index, pergunta, resposta, selecionado, setSelecion
             <RespostaFlashcard data-test="flashcard">
               <p data-test="flashcard-text">{resposta}</p>
               <div className="button">
-                <button data-test="no-btn" className="nao" onClick={() => handleResultado('vermelho', './assets/icone_erro.png')}>Não lembrei</button>
-                <button data-test="partial-btn" className="quase" onClick={() => handleResultado('laranja', './assets/icone_quase.png')}>Quase não lembrei</button>
-                <button data-test="zap-btn" className="zap" onClick={() => handleResultado('verde', './assets/icone_certo.png')}>Zap!</button>
+                <button data-test="no-btn" className="nao" onClick={() => handleResultado("vermelho", "./assets/icone_erro.png", "no-icon")}>Não lembrei</button>
+                <button data-test="partial-btn" className="quase" onClick={() => handleResultado("laranja", "./assets/icone_quase.png","partial-icon")}>Quase não lembrei</button>
+                <button data-test="zap-btn" className="zap" onClick={() => handleResultado("verde", "./assets/icone_certo.png","zap-icon")}>Zap!</button>
               </div>
             </RespostaFlashcard>
             : <PerguntaFlashcard data-test="flashcard">
@@ -43,7 +45,7 @@ export const Flashcards = ({ index, pergunta, resposta, selecionado, setSelecion
       ) : (
         <ContainerFlashcard data-test="flashcard" onClick={iconeInicial ? () => setVerPergunta(true) : () => false}>
           
-          <p data-test="flashcard-text" className={iconeInicial ? '' : `riscado ${estilo}`}>Pergunta {index}</p>
+          <p data-test={iconeInicial ? "flashcard-text" : {dataTest}} className={iconeInicial ? '' : `riscado ${estilo}`}>Pergunta {index}</p>
           <img
             data-test="play-btn"
             src={iconeInicial ? './assets/seta_play.png' : icone}
