@@ -151,6 +151,10 @@ body {
 .verde {
   color: #2FBE34 !important;
 }
+
+* {
+  box-sizing: border-box;
+}
 `
 
 export default GlobalStyles
