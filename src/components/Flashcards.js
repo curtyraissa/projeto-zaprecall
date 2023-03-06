@@ -45,7 +45,10 @@ export const Flashcards = ({ index, pergunta, resposta, selecionado, setSelecion
       ) : (
         <ContainerFlashcard data-test="flashcard" onClick={iconeInicial ? () => setVerPergunta(true) : () => false}>
           
-          <p data-test={iconeInicial ? "flashcard-text" : {dataTest}} className={iconeInicial ? '' : `riscado ${estilo}`}>Pergunta {index}</p>
+          {/* <p data-test={iconeInicial ? "flashcard-text" : {dataTest}} className={iconeInicial ? '' : `riscado ${estilo}`}>Pergunta {index}</p> */}
+
+
+          <p data-test="flashcard-text" className={iconeInicial ? '' : `riscado ${estilo}`}>Pergunta {index}</p>
           <img
             data-test="play-btn"
             src={iconeInicial ? './assets/seta_play.png' : icone}
