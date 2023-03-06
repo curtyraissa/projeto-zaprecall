@@ -1,19 +1,36 @@
 import { useState } from "react"
 import styled from "styled-components"
 
-export const Flashcards = () => {
+export const Flashcards = ({ index, pergunta, resposta }) => {
   const [verPergunta, setVerPergunta] = useState(false)
+  const [verResposta, setVerResposta] = useState(false)
 
   return (
     <>
       {verPergunta === true ? (
-        <PerguntaFlashcard data-test="flashcard">
-          <p data-test="flashcard-text">O que é JSX?</p>
-          <img data-test="turn-btn" src="./assets/seta_virar.png"></img>
-        </PerguntaFlashcard>
+        <>
+          {verResposta === true ?
+            <RespostaFlashcard data-test="flashcard">
+              <p data-test="flashcard-text">{resposta}</p>
+              <div className="button">
+                <button data-test="no-btn" className="vermelho">Não lembrei</button>
+                <button data-test="partial-btn" className="laranja">Quase não lembrei</button>
+                <button data-test="zap-btn" className="verde">Zap!</button>
+              </div>
+            </RespostaFlashcard>
+            : <PerguntaFlashcard data-test="flashcard">
+              <p data-test="flashcard-text">{pergunta}</p>
+              <img
+                data-test="turn-btn"
+                src="./assets/seta_virar.png"
+                onClick={() => setVerResposta(true)}
+              ></img>
+            </PerguntaFlashcard>
+          }
+        </>
       ) : (
         <ContainerFlashcard data-test="flashcard">
-          <p data-test="flashcard-text">Pergunta 1</p>
+          <p data-test="flashcard-text">Pergunta {index}</p>
           <img
             data-test="play-btn"
             src="./assets/seta_play.png"
@@ -23,16 +40,6 @@ export const Flashcards = () => {
         </ContainerFlashcard>
       )}
 
-
-      {/* <RespostaFlashcard data-test="flashcard">
-        <p data-test="flashcard-text">JSX é uma sintaxe para escrever HTML dentro do JS</p>
-        <div className="button">
-          <button data-test="no-btn" className="vermelho">Não lembrei</button>
-          <button data-test="partial-btn" className="laranja">Quase não lembrei</button>
-          <button data-test="zap-btn" className="verde">Zap!</button>
-        </div>
-      </RespostaFlashcard> */}
-
       {/* <ResultadoFlashcard data-test="flashcard">
         <p data-test="flashcard-text" className="vermelho">Pergunta 1</p>
         <img src="./assets/icone_erro.png" alt="icone erro"></img>
@@ -41,57 +48,6 @@ export const Flashcards = () => {
 
   )
 }
-
-const ContainerFlashcard = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-color: #ffffff;
-  width: 300px;
-  height: 65px;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-
-  p {
-    font-family: 'Recursive', sans-serif; 
-    font-weight: 700;
-    font-size: 16px;
-    color: #333333;
-  }
-
-  img {
-    width: 20px;
-    height: 23px;
-  }
-`
-
-const PerguntaFlashcard = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 299px;
-  height: 131px;
-  background: #FFFFD5;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  padding: 15px;
-  position: relative;
-
-  p {
-    font-family: 'Recursive', sans-serif; 
-    font-weight: 400;
-    font-size: 18px;
-    color: #333333;
-  }
-
-  img {
-    width: 30px;
-    height: 20px;
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    z-index: 1;
-  }
-`
 
 const RespostaFlashcard = styled.div`
   display: flex;
@@ -139,6 +95,65 @@ const RespostaFlashcard = styled.div`
 
   .verde {
     background-color: #2FBE34;
+  }
+
+  .virar{
+    transform: rotateY(-180deg);
+  }
+`
+
+const PerguntaFlashcard = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 299px;
+  height: 131px;
+  background: #FFFFD5;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  padding: 15px;
+  position: relative;
+
+  p {
+    font-family: 'Recursive', sans-serif; 
+    font-weight: 400;
+    font-size: 18px;
+    color: #333333;
+  }
+
+  img {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 1;
+  }
+
+  .virar{
+    transform: rotateY(0deg);
+  }
+`
+
+const ContainerFlashcard = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #ffffff;
+  width: 300px;
+  height: 65px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+
+  p {
+    font-family: 'Recursive', sans-serif; 
+    font-weight: 700;
+    font-size: 16px;
+    color: #333333;
+  }
+
+  img {
+    width: 20px;
+    height: 23px;
   }
 `
 
