@@ -1,12 +1,21 @@
+import { useState } from "react"
 import styled from "styled-components"
 import { Flashcards } from "./Flashcards"
 
 export const Deck = ({ cards }) => {
+  const [selecionado, setSelecionado] = useState([])
+  
   return (
     <ContainerDeck>
       {cards.map((item, i) => {
         return (
-          <Flashcards key={i} index={i + 1} pergunta={item.question} resposta={item.answer} />
+          <Flashcards 
+            key={i} 
+            index={i + 1} 
+            pergunta={item.question} 
+            resposta={item.answer} 
+            selecionado={selecionado}
+            setSelecionado={setSelecionado}/>
         )
       })}
     </ContainerDeck>

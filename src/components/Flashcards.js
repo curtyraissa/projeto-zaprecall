@@ -1,9 +1,20 @@
 import { useState } from "react"
 import styled from "styled-components"
 
-export const Flashcards = ({ index, pergunta, resposta }) => {
+export const Flashcards = ({ index, pergunta, resposta, selecionado, setSelecionado }) => {
   const [verPergunta, setVerPergunta] = useState(false)
   const [verResposta, setVerResposta] = useState(false)
+  const [estilo, setEstilo] = useState("")
+  const [icone, setIcone] = useState("")
+  
+  const iconeInicial = icone === ''
+
+  function handleResultado(e, i) {
+    setVerPergunta(false)
+    setEstilo(e)
+    setIcone(i)
+    setSelecionado([...selecionado, { estilo: e, icone: i }])
+  }
 
   return (
     <>
@@ -13,9 +24,9 @@ export const Flashcards = ({ index, pergunta, resposta }) => {
             <RespostaFlashcard data-test="flashcard">
               <p data-test="flashcard-text">{resposta}</p>
               <div className="button">
-                <button data-test="no-btn" className="vermelho">Não lembrei</button>
-                <button data-test="partial-btn" className="laranja">Quase não lembrei</button>
-                <button data-test="zap-btn" className="verde">Zap!</button>
+                <button data-test="no-btn" className="nao" onClick={() => handleResultado('vermelho', './assets/icone_erro.png')}>Não lembrei</button>
+                <button data-test="partial-btn" className="quase" onClick={() => handleResultado('laranja', './assets/icone_quase.png')}>Quase não lembrei</button>
+                <button data-test="zap-btn" className="zap" onClick={() => handleResultado('verde', './assets/icone_certo.png')}>Zap!</button>
               </div>
             </RespostaFlashcard>
             : <PerguntaFlashcard data-test="flashcard">
@@ -29,21 +40,17 @@ export const Flashcards = ({ index, pergunta, resposta }) => {
           }
         </>
       ) : (
-        <ContainerFlashcard data-test="flashcard">
-          <p data-test="flashcard-text">Pergunta {index}</p>
+        <ContainerFlashcard data-test="flashcard" onClick={iconeInicial ? () => setVerPergunta(true) : () => false}>
+          
+          <p data-test="flashcard-text" className={iconeInicial ? '' : `riscado ${estilo}`}>Pergunta {index}</p>
           <img
             data-test="play-btn"
-            src="./assets/seta_play.png"
+            src={iconeInicial ? './assets/seta_play.png' : icone}
             alt="seta play"
             onClick={() => setVerPergunta(true)}
           ></img>
         </ContainerFlashcard>
       )}
-
-      {/* <ResultadoFlashcard data-test="flashcard">
-        <p data-test="flashcard-text" className="vermelho">Pergunta 1</p>
-        <img src="./assets/icone_erro.png" alt="icone erro"></img>
-      </ResultadoFlashcard> */}
     </>
 
   )
@@ -85,15 +92,15 @@ const RespostaFlashcard = styled.div`
     font-size: 12px;
   }
 
-  .vermelho {
+  .nao {
     background-color: #FF3030;
   }
 
-  .laranja {
+  .quase {
     background-color: #FF922E;
   }
 
-  .verde {
+  .zap {
     background-color: #2FBE34;
   }
 
@@ -155,35 +162,4 @@ const ContainerFlashcard = styled.div`
     width: 20px;
     height: 23px;
   }
-`
-
-const ResultadoFlashcard = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-color: #ffffff;
-  width: 300px;
-  height: 65px;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-
-  p {
-    font-family: 'Recursive', sans-serif; 
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: line-through;
-  }
-
-  .vermelho {
-    color: #FF3030;
-  }
-
-  .laranja {
-    color: #FF922E;
-  }
-
-  .verde {
-    color: #2FBE34;
-  }
-
 `
