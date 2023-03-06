@@ -1,20 +1,17 @@
 import styled from "styled-components"
 import { Flashcards } from "./Flashcards"
 
-export const Deck = () => {
-    return (
-      <ContainerDeck>
-        <Flashcards/>
-        <Flashcards/>
-        <Flashcards/>
-        <Flashcards/>
-        <Flashcards/>
-        <Flashcards/>
-        <Flashcards/>
-        <Flashcards/>
-      </ContainerDeck>
-    )
-  }
+export const Deck = ({ cards }) => {
+  return (
+    <ContainerDeck>
+      {cards.map((item, i) => {
+        return (
+          <Flashcards key={i} index={i + 1} pergunta={item.question} resposta={item.answer} />
+        )
+      })}
+    </ContainerDeck>
+  )
+}
 
 const ContainerDeck = styled.div`
   display: flex;
